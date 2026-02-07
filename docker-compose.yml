@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  frontend:
+    image: my-vue-app-danny
+    ports:
+      - '8080:80'
