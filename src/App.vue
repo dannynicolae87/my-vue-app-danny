@@ -14,21 +14,21 @@ const alertVisible = ref(false)
 function showAlert() {
   alertVisible.value = true
 }
-function cevaPentruTestare() {
-  const count = ref(0)
 
-  return () =>
-    h(
-      'button',
-      {
-        onClick: () => count.value++,
-        style: {
-          padding: '10px',
-          fontSize: '16px',
+const CevaPentruTestare = {
+  name: 'CevaPentruTestare',
+  setup() {
+    const count = ref(0)
+    return () =>
+      h(
+        'button',
+        {
+          onClick: () => count.value++,
+          style: { padding: '10px', fontSize: '16px' },
         },
-      },
-      `Click-uri: ${count.value}`,
-    )
+        `Click-uri: ${count.value}`,
+      )
+  },
 }
 </script>
 
@@ -56,7 +56,8 @@ function cevaPentruTestare() {
   <ButtonWithEmit @button-clicked="doSomething" />
   <button class="btn" @click="showAlert">Show Alert</button>
   <CustomAlert v-if="alertVisible" message="This is a custom alert!" />
-  <cevaPentruTestare />
+
+  <CevaPentruTestare />
   <!-- This is a test component to demonstrate the use of ref and h -->
 </template>
 
