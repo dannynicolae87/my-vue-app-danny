@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, h } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import ButtonWithEmit from './components/ButtonWithEmit.vue'
 import CustomAlert from './components/CustomAlert.vue'
@@ -13,6 +13,22 @@ function doSomething() {
 const alertVisible = ref(false)
 function showAlert() {
   alertVisible.value = true
+}
+function cevaPentruTestare() {
+  const count = ref(0)
+
+  return () =>
+    h(
+      'button',
+      {
+        onClick: () => count.value++,
+        style: {
+          padding: '10px',
+          fontSize: '16px',
+        },
+      },
+      `Click-uri: ${count.value}`,
+    )
 }
 </script>
 
@@ -40,6 +56,8 @@ function showAlert() {
   <ButtonWithEmit @button-clicked="doSomething" />
   <button class="btn" @click="showAlert">Show Alert</button>
   <CustomAlert v-if="alertVisible" message="This is a custom alert!" />
+  <cevaPentruTestare />
+  <!-- This is a test component to demonstrate the use of ref and h -->
 </template>
 
 <style scoped>
